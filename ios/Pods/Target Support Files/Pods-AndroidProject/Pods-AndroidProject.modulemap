@@ -1,0 +1,6 @@
+module Pods_AndroidProject {
+  umbrella header "Pods-AndroidProject-umbrella.h"
+
+  export *
+  module * { export * }
+}

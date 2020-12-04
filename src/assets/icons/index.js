@@ -15,8 +15,12 @@ import IconIkan from './ikan.svg'
 import Bit from './bidd.svg'
 import IconPesan from './pesan.svg'
 import Info from './info.svg'
+import Fik from './fik.png'
+import Uk from './unklab.png'
+import Riwayat from './riwayat1.svg'
+import Selesai from './selesaii.svg'
 
 
 export { IconBeranda, IconJual, IconNotifikasi, IconProfil, IconBerandaAktif,
      IconJualAktif, IconNotifikasiAktif, IconProfilAktif, Logo, Logoo, LogoSplash,
-    IconBack, IconTambah, IconIkan, Bit, IconPesan, Info};
+    IconBack, IconTambah, IconIkan, Bit, IconPesan, Info, Fik, Uk, Riwayat, Selesai};

@@ -1,21 +1,41 @@
 import React, { useState, useEffect } from 'react'
 import { Image, Linking, StyleSheet, Text, View } from 'react-native'
-import { colors, getData } from '../../../utils'
+import { colors, getData,useForm } from '../../../utils'
 import { Button } from '../../index'
 import { Fire } from '../../../config'
 import { Gap } from '../../atoms'
 
 const ListLelang = ({ onPress, NamaIkan, HargaAwal, tes, AkanBerakhir, LelangBY, TopBidder, BeratKG, pic, nomorHP}) => {
     const [user, setUser] = useState({});
+    // const [History, setHistory] = useState({});
     useEffect(() => {
         getDataUser();
     }, []);
+    // const getDataFish = () => {
+    //     getData('fish').then(res => {
+    //         console.log('fish login: ', res);
+    //         setUser(res);
+    //         // setHistory();
+    //     })
+    // }
     const getDataUser = () => {
         getData('user').then(res => {
             console.log('user login: ', res);
             setUser(res);
+            setHistory();
         })
     }
+    const [History, setHistory] = useForm(
+        {
+            // LelangBY: user.email,
+            NamaIkan: '',
+            BeratKG: '',
+            // HargaAwal: '',
+            // AkanBerakhir: '',
+            // TopBidder: '',
+            // pic: '',
+            // nomorHP: user.nomorHP,
+    });
     const topBidder = (id) => {
         let hb = parseInt(HargaAwal + 50000);
         Fire.database()
@@ -23,6 +43,13 @@ const ListLelang = ({ onPress, NamaIkan, HargaAwal, tes, AkanBerakhir, LelangBY,
         .update({
             topBidder: user.email,
             hargaAwal: hb,
+        })
+        Fire.database().ref('History/').push({
+            topBidder: user.email,
+            hargaAkhir: hb,
+            // berat: History.BeratKG,
+            // namaIkan: History.NamaIkan,
+            nomorHP: user.nomorHP
         })
         .then((data)=>{
             //success callback
@@ -32,6 +59,11 @@ const ListLelang = ({ onPress, NamaIkan, HargaAwal, tes, AkanBerakhir, LelangBY,
             //error callback
             console.log('error ' , error)
         })
+    }
+    const done = (id) => {
+        Fire.database().ref('fish/'+id).remove()
+        Fire.database().ref('Complete/').push()
+        navigation.navigate('Beranda')
     }
     return (
         <View style={styles.container}>
@@ -45,6 +77,8 @@ const ListLelang = ({ onPress, NamaIkan, HargaAwal, tes, AkanBerakhir, LelangBY,
             <Text style={styles.size}>Bid tertinggi: {TopBidder}</Text>
             </View>
             <View style={styles.button}>
+            <Button type="icon-only" icon="selesai" onPress={() => done(tes)}/>
+            <Gap height={5} />
             <Button type="icon-only" icon="bit" onPress={() => topBidder(tes)}/>
             <Gap height={5} />
             <Button type="icon-only" icon="pesan" onPress={() => {Linking.openURL('https://wa.me/' + nomorHP)}}/>
@@ -80,8 +114,7 @@ const styles = StyleSheet.create({
     button: {
         flexDirection: 'column-reverse',
         flex: 1,
-        alignItems: 'center',
+        alignItems: 'flex-end',
         justifyContent: 'center',
-
     },
 })

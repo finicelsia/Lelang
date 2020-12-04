@@ -1,6 +1,6 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
-import { HalamanDaftar, Masuk, Splash, Jual, Beranda, Profil, Info } from '../pages';
+import { HalamanDaftar, Masuk, Splash, Jual, Beranda, Profil, Info, Riwayat } from '../pages';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { TopNavigator } from '../components';
 
@@ -12,8 +12,10 @@ const MainApp = () => {
         <Tab.Navigator tabBar={props => <TopNavigator {...props} />}>
             <Tab.Screen name="Beranda" component={Beranda}/>
             <Tab.Screen name="Jual" component={Jual}/>
+            <Tab.Screen name="Riwayat" component={Riwayat}/>
             <Tab.Screen name="Info" component={Info}/>
             <Tab.Screen name="Profil" component={Profil}/>
+            
         </Tab.Navigator>
     )
 }

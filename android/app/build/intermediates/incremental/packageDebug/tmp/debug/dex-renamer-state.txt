@@ -1,4 +1,4 @@
-#Fri Nov 06 04:01:02 WITA 2020
-base.0=/Users/finilasut/Auction/android/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+#Fri Nov 20 20:45:08 WITA 2020
+base.0=/Users/finilasut/RevAuction/android/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

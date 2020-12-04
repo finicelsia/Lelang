@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
-import { Logo } from '../../assets'
+import { Logo, Fik, Uk } from '../../assets'
 import { Gap } from '../../components'
 import { colors } from '../../utils'
 
@@ -11,8 +11,12 @@ const Info = () => {
             <ScrollView showsVerticalScrollIndicator={false}>
             <Text style={styles.teks}>Informasi Aplikasi</Text>
             <Gap height={2} />
+            <View style={styles.lg}>
+            <Image source={Fik} style={styles.logoFik}></Image>
             <Image source={Logo} style={styles.logo}></Image>
-            
+            <Image source={Uk} style={styles.logoUk}></Image>
+            </View>
+                  
             <Text style={styles.teks3}>Selamat Datang di Auction of Fish!</Text>
             <Gap height={10} />
             <Text style={styles.teks2}>Aplikasi ini dirancang untuk membantu para pengguna memasarkan hasil tangkapan ikan secara efisien. Aplikasi ini memiliki ketentuan pengguna, dimana para pengguna harus memasukan informasi yang benar agar transaksi bisa berjalan dengan lancar.</Text>
@@ -20,8 +24,8 @@ const Info = () => {
             <Text style={styles.teks2}>Bid harga pada aplikasi ini secara otomatis diatur menjadi Rp.50.000/Bid</Text>
             <Gap height={30} />
             <Text style={styles.teks2}>Contact Admin: </Text>
-            <Text style={styles.teks2}>1. Email   : aof@email.com </Text>
-            <Text style={styles.teks2}>2. No Tlp : 089694981658</Text>
+            <Text style={styles.teks2}>1. Email   : aof@gmail.com </Text>
+            <Text style={styles.teks2}>2. No Tlp : 082190439624</Text>
             <Gap height={10} />
 
             </ScrollView>
@@ -37,6 +41,11 @@ const styles = StyleSheet.create({
         backgroundColor: colors.white,
         padding: 15,
         flex: 1,
+    },
+    lg: {
+        // backgroundColor: 'red',
+        alignSelf: 'center',
+        flexDirection: 'row',
     },
     teks: {
         marginTop: 5,
@@ -59,5 +68,15 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         height: 200,
         width: 200,
+    },
+    logoFik: {
+        alignSelf: 'center',
+        height: 80,
+        width: 80,
+    },
+    logoUk: {
+        alignSelf: 'center',
+        height: 55,
+        width: 55,
     },
 })

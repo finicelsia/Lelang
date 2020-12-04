@@ -1,4 +1,0 @@
-#Fri Nov 06 03:56:19 WITA 2020
-base.0=/Users/finilasut/Auction/android/app/build/intermediates/dex/release/mergeDexRelease/out/classes.dex
-renamed.0=classes.dex
-path.0=classes.dex

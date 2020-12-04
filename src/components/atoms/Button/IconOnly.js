@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import { Bit, IconBack, IconPesan, IconTambah } from '../../../assets'
+import { Bit, IconBack, IconPesan, IconTambah, Selesai } from '../../../assets'
 
 const IconOnly = ({onPress, icon}) => {
     const Icon = () => {
@@ -16,6 +16,9 @@ const IconOnly = ({onPress, icon}) => {
         }
         if (icon === 'pesan'){
             return <IconPesan />
+        }
+        if (icon === 'selesai'){
+            return <Selesai />
         }
         return <IconBack />;
     }

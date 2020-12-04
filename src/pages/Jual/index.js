@@ -7,6 +7,8 @@ import { colors, getData, useForm } from '../../utils'
 import ImagePicker from 'react-native-image-picker';
 import {showMessage} from 'react-native-flash-message';
 import { Fire } from '../../config'
+import DatePicker from './DatePicker'
+import moment from 'moment'
 
 const Jual = ({navigation}) => {
     const [user, setUser] = useState({});
@@ -53,6 +55,7 @@ const Jual = ({navigation}) => {
             pic: '',
             nomorHP: user.nomorHP,
     });
+
     const uploadJualan = () => {
         
         Fire.database().ref('fish/').push({
@@ -62,7 +65,7 @@ const Jual = ({navigation}) => {
             fotoIkan: imgURI,
             hargaAwal: parseInt(Jualan.HargaAwal),
             namaIkan: Jualan.NamaIkan,
-            akanBerakhir: Jualan.AkanBerakhir,
+            akanBerakhir:Jualan.AkanBerakhir,
             nomorHP: user.nomorHP
         })
         .then((data)=>{
@@ -74,6 +77,10 @@ const Jual = ({navigation}) => {
             console.log('error ' , error)
         })
     }
+
+    const dateField = ({ onChange }) => 
+    <DatePicker onDateChange={AkanBerakhir => onChange(AkanBerakhir)} />;
+    
     return (
         <ScrollView style={styles.page} showsVerticalScrollIndicator={false}>
 
@@ -90,7 +97,11 @@ const Jual = ({navigation}) => {
             <Input label="Berat Ikan" value={Jualan.BeratKG} onChangeText={value => SetJualan('BeratKG', value)}/>
             <Gap height={20} />
             <Input label="Harga Awal" value={Jualan.HargaAwal} onChangeText={value => SetJualan('HargaAwal', value)}/>
-            <Gap height={20} />
+            <Gap height={10} />
+            {/* <DatePicker 
+            component={dateField}
+            value={onChange => SetJualan('AkanBerakhir', onChange)}
+            /> */}
             <Input label="Jam Lelang Berakhir" value={Jualan.AkanBerakhir} onChangeText={value => SetJualan('AkanBerakhir', value)}/>
             <Gap height={20} />
             <Button title="JUAL" onPress={uploadJualan}/>

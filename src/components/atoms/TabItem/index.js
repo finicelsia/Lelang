@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import { IconBerandaAktif, IconJualAktif, IconProfilAktif, IconJual, IconProfil, Info } from '../../../assets'
+import { IconBerandaAktif, IconJualAktif, IconProfilAktif, IconJual, IconProfil, Info, Riwayat } from '../../../assets'
 import { colors } from '../../../utils'
 
 
@@ -17,9 +17,13 @@ const TabItem = ({label, isFocused, onLongPress, onPress}) => {
         if(label=== "Info"){
             return isFocused ? <Info/> : <Info/>;
         }
+        if(label=== "Riwayat"){
+            return isFocused ? <Riwayat/> : <Riwayat/>;
+        }
         if(label=== "Profil"){
             return isFocused ? <IconProfilAktif/> : <IconProfil/>;
         }
+        
     }
     return (
         <TouchableOpacity
